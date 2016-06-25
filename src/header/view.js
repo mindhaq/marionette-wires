@@ -1,9 +1,9 @@
 import _ from 'lodash';
-import {history} from 'backbone';
-import {ItemView} from 'backbone.marionette';
+import Backbone from 'backbone';
+import View from '../common/view';
 import template from './template.hbs';
 
-export default ItemView.extend({
+export default View.extend({
   template: template,
   tagName: 'nav',
   className: 'header navbar navbar-default navbar-fixed-top',
@@ -13,7 +13,7 @@ export default ItemView.extend({
   },
 
   collectionEvents: {
-    all: 'render'
+    'all': 'render'
   },
 
   templateHelpers() {
@@ -36,7 +36,7 @@ export default ItemView.extend({
   },
 
   onCollapseShow() {
-    this.listenToOnce(history, 'route', () => {
+    this.listenToOnce(Backbone.history, 'route', function() {
       this.ui.collapse.collapse('hide');
     });
   }

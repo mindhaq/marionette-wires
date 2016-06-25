@@ -1,15 +1,14 @@
-import {Router} from 'backbone-routing';
-import HeaderService from '../header/service';
+import Router from '../common/router';
+import Radio from 'backbone.radio';
 import LayoutView from './layout-view';
 import IndexRoute from './index/route';
 import ShowRoute from './show/route';
 
 export default Router.extend({
-  initialize(options = {}) {
+  initialize(options) {
     this.container = options.container;
-    this.listenTo(this, 'before:enter', this.onBeforeEnter);
 
-    HeaderService.request('add', {
+    Radio.command('header', 'add', {
       name: 'Books',
       path: 'books',
       type: 'primary'
@@ -19,9 +18,7 @@ export default Router.extend({
   onBeforeEnter() {
     this.layout = new LayoutView();
     this.container.show(this.layout);
-    HeaderService.request('activate', {
-      path: 'books'
-    });
+    Radio.command('header', 'activate', { path: 'books' });
   },
 
   routes: {

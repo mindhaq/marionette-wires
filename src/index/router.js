@@ -1,16 +1,14 @@
-import {Router} from 'backbone-routing';
-import HeaderService from '../header/service';
+import Router from '../common/router';
+import Radio from 'backbone.radio';
 import IndexRoute from './route';
 
 export default Router.extend({
-  initialize(options = {}) {
+  initialize(options) {
     this.container = options.container;
   },
 
   onBeforeEnter() {
-    HeaderService.request('activate', {
-      path: ''
-    });
+    Radio.command('header', 'activate', { path: '' });
   },
 
   routes: {

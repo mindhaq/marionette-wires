@@ -1,11 +1,11 @@
-import {ItemView} from 'backbone.marionette';
+import ItemView from '../common/item-view';
 import template from './item-template.hbs';
 
 export default ItemView.extend({
   template: template,
 
   className() {
-    return `flashes__alert alert alert-${this.model.get('type')}`;
+    return 'flashes__alert alert alert-' + this.model.get('type');
   },
 
   attributes: {
@@ -13,7 +13,7 @@ export default ItemView.extend({
   },
 
   events: {
-    'click button.close': 'dismiss'
+    'click button.close' : 'dismiss'
   },
 
   dismiss() {

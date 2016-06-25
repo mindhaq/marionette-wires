@@ -1,4 +1,4 @@
-import {Model} from 'backbone';
+import Model from '../common/model';
 
 export default Model.extend({
   urlRoot: '/api/colors',
@@ -7,8 +7,8 @@ export default Model.extend({
     active: false
   },
 
-  validate(attrs = {}) {
-    let errors = [];
+  validate(attrs) {
+    var errors = [];
 
     if (attrs.name === '') {
       errors.push('Missing "name" field');

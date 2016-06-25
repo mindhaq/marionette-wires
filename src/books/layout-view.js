@@ -1,4 +1,4 @@
-import {LayoutView} from 'backbone.marionette';
+import LayoutView from '../common/layout-view';
 import template from './layout-template.hbs';
 
 export default LayoutView.extend({

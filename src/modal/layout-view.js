@@ -1,4 +1,5 @@
-import {LayoutView} from 'backbone.marionette';
+import LayoutView from '../common/layout-view';
+import $ from 'jquery';
 import template from './layout-template.hbs';
 
 export default LayoutView.extend({
@@ -14,29 +15,32 @@ export default LayoutView.extend({
     content: '.modal-content'
   },
 
+  initialize() {
+    this.$el.modal({ show: false, backdrop: 'static' });
+  },
+
   triggers: {
-    'shown.bs.modal'  : 'modal:show',
-    'hidden.bs.modal' : 'modal:hide',
+    'show.bs.modal'   : { preventDefault: false, event: 'before:open' },
+    'shown.bs.modal'  : { preventDefault: false, event: 'open' },
+    'hide.bs.modal'   : { preventDefault: false, event: 'before:close' },
+    'hidden.bs.modal' : { preventDefault: false, event: 'close' }
   },
 
-  onShow() {
-    this.$el.modal({
-      show: false,
-      backdrop: 'static'
-    });
+  open(view) {
+    var deferred = $.Deferred();
+    this.once('open', deferred.resolve);
+    this.content.show(view);
+    this.$el.modal('show');
+    return deferred;
   },
 
-  animateIn() {
-    return new Promise(resolve => {
-      this.once('modal:show', resolve);
-      this.$el.modal('show');
+  close() {
+    var deferred = $.Deferred();
+    this.once('close', function() {
+      this.content.empty();
+      deferred.resolve();
     });
-  },
-
-  animateOut() {
-    return new Promise(resolve => {
-      this.once('modal:hide', resolve);
-      this.$el.modal('hide');
-    });
+    this.$el.modal('hide');
+    return deferred;
   }
 });

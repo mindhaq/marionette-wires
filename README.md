@@ -1,6 +1,8 @@
 Marionette Wires
 ================
 
+Edit : Update to the latest version / dependencies
+
 An opinionated example application built with Marionette.js.
 
 ## Quick start
