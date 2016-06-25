@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import Router from '../common/router';
 import Radio from 'backbone.radio';
 
@@ -7,10 +8,14 @@ import ShowRoute from './show/route';
 import EditRoute from './edit/route';
 
 export default Router.extend({
+  channelName: 'header',
+  
   initialize(options) {
     this.container = options.container;
-
-    Radio.command('header', 'add', {
+    
+    this.channel = Radio.channel(_.result(this, 'channelName'));
+    this.channel.request('add', {
+    //Radio.request('header 'add', {
       name: 'Colors',
       path: 'colors',
       type: 'primary'
@@ -18,7 +23,8 @@ export default Router.extend({
   },
 
   onBeforeEnter() {
-    Radio.command('header', 'activate', { path: 'colors' });
+    //Radio.request('header', 'activate', { path: 'colors' });
+    this.channel.request( 'activate', { path: 'colors' });
   },
 
   routes: {

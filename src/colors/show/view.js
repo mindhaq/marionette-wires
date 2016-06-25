@@ -7,10 +7,11 @@ import template from './template.hbs';
 export default View.extend({
   template: template,
   className: 'colors colors--show container',
-
+  
   initialize(options) {
     this.model = options.model;
     this.model.cleanup();
+    //this.channelFlashes = Radio.channel('flashes');
   },
 
   templateHelpers() {
@@ -52,7 +53,8 @@ export default View.extend({
 
   handleDestroySuccess() {
     Backbone.history.navigate('colors', { trigger: true });
-    Radio.command('flashes', 'add', {
+     Radio.request('flashes', 'add', {
+    //Radio.request('flashes', 'add', {
       timeout : 5000,
       type    : 'info',
       title   : 'It\'s gone!',

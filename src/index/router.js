@@ -8,7 +8,7 @@ export default Router.extend({
   },
 
   onBeforeEnter() {
-    Radio.command('header', 'activate', { path: '' });
+    Radio.request('header', 'activate', { path: '' });
   },
 
   routes: {

@@ -17,7 +17,7 @@ export default Service.extend({
   },
 
   onStop() {
-    this.channel.stopComplying();
+    //this.channel.stopComplying();
   },
 
   add(flash) {
@@ -39,7 +39,8 @@ export default Service.extend({
   },
 
   _bindChannelCommands() {
-    this.channel.comply({
+    this.channel.reply({
+    //this.channel.comply({
       add    : this.add,
       remove : this.remove
     }, this);

@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import Router from '../common/router';
 import Radio from 'backbone.radio';
 import LayoutView from './layout-view';
@@ -8,7 +9,7 @@ export default Router.extend({
   initialize(options) {
     this.container = options.container;
 
-    Radio.command('header', 'add', {
+    Radio.request('header', 'add', {
       name: 'Books',
       path: 'books',
       type: 'primary'
@@ -18,7 +19,7 @@ export default Router.extend({
   onBeforeEnter() {
     this.layout = new LayoutView();
     this.container.show(this.layout);
-    Radio.command('header', 'activate', { path: 'books' });
+    Radio.request('header', 'activate', { path: 'books' });
   },
 
   routes: {

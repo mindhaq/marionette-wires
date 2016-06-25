@@ -15,7 +15,8 @@ export default Service.extend({
     this.view = new View({ collection: this.collection });
     this.container.show(this.view);
 
-    this.channel.comply({
+    //this.channel.comply({
+    this.channel.reply({
       add      : this.onAdd,
       activate : this.onActivate,
       remove   : this.onRemove

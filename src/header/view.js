@@ -24,7 +24,7 @@ export default View.extend({
   },
 
   serializeWhere(props) {
-    return _.invoke(this.collection.where(props), 'toJSON');
+    return _.invokeMap(this.collection.where(props), 'toJSON');
   },
 
   ui: {

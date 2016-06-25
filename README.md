@@ -1,8 +1,16 @@
 Marionette Wires
 ================
 
-Edit : Update to the latest version / dependencies
+Edit : Update to the latest version / dependencies 
+  * Radio.command -> Radio.request 
+  * _.invoke -> _.invokeMap
+  * still jQuery 2.x (3.x not yet compatible with Bootstrap)
+  * common/router 
+  * common/*
 
+TODO : Unit tests should be fixed too...
+Removed deps minimatch because of npm fetch errors.
+  
 An opinionated example application built with Marionette.js.
 
 ## Quick start

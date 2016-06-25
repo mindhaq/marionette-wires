@@ -9,18 +9,18 @@ export default Backbone.Model.extend({
   },
 
   handleRequest() {
-    Radio.command('flashes', 'remove', this.serverError);
+    Radio.request('flashes', 'remove', this.serverError);
     delete this.serverError;
   },
 
   handleError() {
     this.serverError = { type: 'danger', title: 'Server Error' };
-    Radio.command('flashes', 'add', this.serverError);
+    Radio.request('flashes', 'add', this.serverError);
   },
 
   cleanup() {
     if (this.serverError) {
-      Radio.command('flashes', 'remove', this.serverError);
+      Radio.request('flashes', 'remove', this.serverError);
     }
     delete this.serverError;
     delete this.validationError;
