@@ -1,10 +1,10 @@
 import _ from 'lodash';
-import {LayoutView} from 'backbone.marionette';
+import {View} from 'backbone.marionette';
 import CollectionView from './collection-view';
 import {Collection} from 'backbone';
 import template from './layout-template.hbs';
 
-export default LayoutView.extend({
+export default View.extend({
   template: template,
   className: 'colors colors--index container',
 

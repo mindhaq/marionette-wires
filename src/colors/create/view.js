@@ -1,11 +1,11 @@
 import nprogress from 'nprogress';
-import {ItemView} from 'backbone.marionette';
+import {View} from 'backbone.marionette';
 import FormBehavior from '../../forms/behavior';
 import {history} from 'backbone';
 import template from './template.hbs';
 import storage from '../storage';
 
-export default ItemView.extend({
+export default View.extend({
   template: template,
   className: 'colors colors--create container',
 

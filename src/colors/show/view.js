@@ -1,11 +1,11 @@
-import {ItemView} from 'backbone.marionette';
+import {View} from 'backbone.marionette';
 import nprogress from 'nprogress';
 import ModalService from '../../modal/service';
 import FlashesService from '../../flashes/service';
 import {history} from 'backbone';
 import template from './template.hbs';
 
-export default ItemView.extend({
+export default View.extend({
   template: template,
   className: 'colors colors--show container',
 

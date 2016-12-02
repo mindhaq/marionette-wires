@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import {history} from 'backbone';
-import {ItemView} from 'backbone.marionette';
+import {View} from 'backbone.marionette';
 import template from './template.hbs';
 
-export default ItemView.extend({
+export default View.extend({
   template: template,
   tagName: 'nav',
   className: 'header navbar navbar-default navbar-fixed-top',
