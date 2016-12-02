@@ -11,6 +11,7 @@ import FlashesService from './flashes/service';
 import IndexRoute from './index/route';
 import ColorsIndexRoute from './colors/index/route';
 import ColorsShowRoute from './colors/show/route';
+import ColorsEditRoute from './colors/edit/route';
 
 let app = new Application();
 
@@ -43,7 +44,7 @@ router.map(function (route) {
     route('colors.index', {path: '', routeClass: ColorsIndexRoute});
     route('colors.new', {path: 'new'});
     route('colors.show', {path: ':colorid', routeClass: ColorsShowRoute});
-    route('colors.edit', {path: ':colorid/edit'});
+    route('colors.edit', {path: ':colorid/edit', routeClass: ColorsEditRoute});
   });
   route('books', {path: '/books'}, function () {
     route('books.index', {path: 'index'});
