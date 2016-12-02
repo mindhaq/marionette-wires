@@ -12,6 +12,7 @@ import IndexRoute from './index/route';
 import ColorsIndexRoute from './colors/index/route';
 import ColorsShowRoute from './colors/show/route';
 import ColorsEditRoute from './colors/edit/route';
+import ColorsCreateRoute from './colors/create/route';
 
 let app = new Application();
 
@@ -42,7 +43,7 @@ router.map(function (route) {
   route('index', {path: '/', routeClass: IndexRoute});
   route('colors', {path: '/colors', abstract: true}, function () {
     route('colors.index', {path: '', routeClass: ColorsIndexRoute});
-    route('colors.new', {path: 'new'});
+    route('colors.new', {path: 'new', routeClass: ColorsCreateRoute});
     route('colors.show', {path: ':colorid', routeClass: ColorsShowRoute});
     route('colors.edit', {path: ':colorid/edit', routeClass: ColorsEditRoute});
   });
