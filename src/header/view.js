@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from 'underscore';
 import {history} from 'backbone';
 import {View} from 'backbone.marionette';
 import template from './template.hbs';
@@ -16,7 +16,7 @@ export default View.extend({
     all: 'render'
   },
 
-  templateHelpers() {
+  templateContext() {
     return {
       primaryItems   : this.serializeWhere({ type: 'primary' }),
       secondaryItems : this.serializeWhere({ type: 'secondary' })
