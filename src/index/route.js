@@ -1,13 +1,13 @@
-import {Route} from 'backbone-routing';
+import {Route} from 'marionette.routing';
 import View from './view';
+import HeaderService from '../header/service';
 
 export default Route.extend({
-  initialize(options = {}) {
-    this.container = options.container;
-  },
+  viewClass: View,
 
-  render() {
-    this.view = new View();
-    this.container.show(this.view);
+  activate() {
+    HeaderService.request('activate', {
+      path: ''
+    });
   }
 });

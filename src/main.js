@@ -8,6 +8,8 @@ import ModalService from './modal/service';
 import HeaderService from './header/service';
 import FlashesService from './flashes/service';
 
+import IndexRoute from './index/route';
+
 let app = new Application();
 
 ModalService.setup({
@@ -34,7 +36,7 @@ let router = createRouter({log: true, logError: true});
 router.rootRegion = app.layout.getRegion('content');
 
 router.map(function (route) {
-  route('index', {path: '/'});
+  route('index', {path: '/', routeClass: IndexRoute});
   route('colors', {path: '/colors', abstract: true}, function () {
     route('colors.index', {path: ''});
     route('colors.new', {path: 'new'});
