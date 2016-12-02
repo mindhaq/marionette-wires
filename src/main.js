@@ -1,6 +1,6 @@
 import './plugins';
-import Backbone from 'backbone';
 import $ from 'jquery';
+import {createRouter, middleware} from 'marionette.routing'
 
 import Application from './application/application';
 
@@ -8,22 +8,18 @@ import ModalService from './modal/service';
 import HeaderService from './header/service';
 import FlashesService from './flashes/service';
 
-import IndexRouter from './index/router';
-import ColorsRouter from './colors/router';
-import BooksRouter from './books/router';
-
 let app = new Application();
 
 ModalService.setup({
-  container: app.layout.overlay
+  container: app.layout.getRegion('overlay')
 });
 
 HeaderService.setup({
-  container: app.layout.header
+  container: app.layout.getRegion('header')
 });
 
 FlashesService.setup({
-  container: app.layout.flashes
+  container: app.layout.getRegion('flashes')
 });
 
 $(document).ajaxError(() => {
@@ -33,16 +29,25 @@ $(document).ajaxError(() => {
   });
 });
 
-app.index = new IndexRouter({
-  container: app.layout.content
+let router = createRouter({log: true, logError: true});
+
+router.rootRegion = app.layout.getRegion('content');
+
+router.map(function (route) {
+  route('index', {path: '/'});
+  route('colors', {path: '/colors', abstract: true}, function () {
+    route('colors.index', {path: ''});
+    route('colors.new', {path: 'new'});
+    route('colors.show', {path: ':colorid'});
+    route('colors.edit', {path: ':colorid/edit'});
+  });
+  route('books', {path: '/books'}, function () {
+    route('books.index', {path: 'index'});
+    route('books.show', {path: ':bookid'});
+  });
 });
 
-app.colors = new ColorsRouter({
-  container: app.layout.content
-});
+router.use(middleware);
 
-app.books = new BooksRouter({
-  container: app.layout.content
-});
+router.listen();
 
-Backbone.history.start();
