@@ -17,9 +17,8 @@ module.exports = {
   module: {
     loaders: [
       {test: /\.hbs$/, loader: 'handlebars'},
-      {
-        test: /\.js$/, loader: 'babel?presets[]=es2015', include: [path.resolve(__dirname, 'src')]
-      }
+      {test: /bootstrap.+\.(jsx|js)$/, loader: 'imports?jQuery=jquery,$=jquery,this=>window' },
+      {test: /\.js$/, loader: 'babel?presets[]=es2015', include: [path.resolve(__dirname, 'src')]}
     ]
   }
 };
