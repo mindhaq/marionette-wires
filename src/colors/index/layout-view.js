@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from 'underscore';
 import {View} from 'backbone.marionette';
 import CollectionView from './collection-view';
 import {Collection} from 'backbone';
@@ -26,15 +26,15 @@ export default View.extend({
     this.filteredCollection = new Collection(filtered);
   },
 
-  onAttach() {
+  onRender() {
     this.collectionView = new CollectionView({
       collection: this.filteredCollection
     });
 
-    this.list.show(this.collectionView);
+    this.getRegion('list').show(this.collectionView);
   },
 
-  templateHelpers() {
+  templateContext() {
     let total   = Math.ceil(this.collection.length / this.state.limit);
     let current = Math.ceil(this.state.start / this.state.limit) + 1;
 

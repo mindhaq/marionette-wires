@@ -9,6 +9,7 @@ import HeaderService from './header/service';
 import FlashesService from './flashes/service';
 
 import IndexRoute from './index/route';
+import ColorsIndexRoute from './colors/index/route';
 
 let app = new Application();
 
@@ -38,7 +39,7 @@ router.rootRegion = app.layout.getRegion('content');
 router.map(function (route) {
   route('index', {path: '/', routeClass: IndexRoute});
   route('colors', {path: '/colors', abstract: true}, function () {
-    route('colors.index', {path: ''});
+    route('colors.index', {path: '', routeClass: ColorsIndexRoute});
     route('colors.new', {path: 'new'});
     route('colors.show', {path: ':colorid'});
     route('colors.edit', {path: ':colorid/edit'});
@@ -47,6 +48,12 @@ router.map(function (route) {
     route('books.index', {path: 'index'});
     route('books.show', {path: ':bookid'});
   });
+});
+
+HeaderService.request('add', {
+  name: 'Colors',
+  path: 'colors',
+  type: 'primary'
 });
 
 router.use(middleware);
