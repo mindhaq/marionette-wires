@@ -1,32 +1,21 @@
-import {Route} from 'backbone-routing';
-import LibraryView from '../library/collection-view';
+import {Route} from 'marionette.routing';
 import ViewerView from '../viewer/view';
 import storage from '../storage';
 
 export default Route.extend({
-  initialize(options = {}) {
-    this.layout = options.layout;
-    this.listenTo(this, 'fetch', this.onFetch);
-  },
-
-  fetch(id) {
+  activate(transition) {
     return storage.findAll().then(collection => {
       this.collection = collection;
-      this.model = this.collection.get(id);
+      this.model = this.collection.get(+transition.params.bookid);
       this.collection.active = this.model;
     });
   },
 
-  render() {
-    this.library = new LibraryView({
-      collection: this.collection
-    });
+  viewClass: ViewerView,
 
-    this.viewer = new ViewerView({
+  viewOptions() {
+    return {
       model: this.model
-    });
-
-    this.layout.library.show(this.library);
-    this.layout.viewer.show(this.viewer);
+    }
   }
 });

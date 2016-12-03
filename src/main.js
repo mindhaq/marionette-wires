@@ -1,6 +1,6 @@
 import './plugins';
 import $ from 'jquery';
-import {createRouter, middleware} from 'marionette.routing'
+import {createRouter, middleware} from 'marionette.routing';
 
 import Application from './application/application';
 
@@ -16,7 +16,8 @@ import ColorsEditRoute from './colors/edit/route';
 import ColorsCreateRoute from './colors/create/route';
 
 import BooksRoute from './books/route';
-import BooksIndexView from './books/index/view'
+import BooksIndexView from './books/index/view';
+import BooksShowRoute from './books/show/route';
 
 let app = new Application();
 
@@ -51,9 +52,9 @@ router.map(function (route) {
     route('colors.show', {path: ':colorid', routeClass: ColorsShowRoute});
     route('colors.edit', {path: ':colorid/edit', routeClass: ColorsEditRoute});
   });
-  route('books', {path: '/books', routeClass: BooksRoute}, function () {
-    route('books.index', {path: 'index', viewClass: BooksIndexView});
-    route('books.show', {path: ':bookid'});
+  route('books', {path: '/books', routeClass: BooksRoute, abstract: true}, function () {
+    route('books.index', {path: '', viewClass: BooksIndexView});
+    route('books.show', {path: ':bookid', routeClass: BooksShowRoute});
   });
 });
 
