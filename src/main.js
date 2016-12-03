@@ -19,6 +19,8 @@ import BooksRoute from './books/route';
 import BooksIndexView from './books/index/view';
 import BooksShowRoute from './books/show/route';
 
+import './main.less';
+
 let app = new Application();
 
 ModalService.setup({
