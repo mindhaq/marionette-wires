@@ -13,7 +13,7 @@ export default View.extend({
     this.model = options.model;
   },
 
-  templateHelpers() {
+  templateContext() {
     return {
       errors: this.model.validationError
     };

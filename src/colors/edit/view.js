@@ -13,7 +13,7 @@ export default View.extend({
     form: { behaviorClass: FormBehavior }
   },
 
-  templateHelpers() {
+  templateContext() {
     return {
       errors: this.model.validationError
     };
