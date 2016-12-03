@@ -2,11 +2,14 @@ import _ from 'underscore';
 import {history} from 'backbone';
 import {View} from 'backbone.marionette';
 import template from './template.hbs';
+import {RouterLink} from 'marionette.routing';
 
 export default View.extend({
   template: template,
   tagName: 'nav',
   className: 'header navbar navbar-default navbar-fixed-top',
+
+  behaviors: [RouterLink],
 
   attributes: {
     role: 'navigation'

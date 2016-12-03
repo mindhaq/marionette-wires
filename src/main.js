@@ -62,13 +62,13 @@ router.map(function (route) {
 
 HeaderService.request('add', {
   name: 'Colors',
-  path: 'colors',
+  path: 'colors.index',
   type: 'primary'
 });
 
 HeaderService.request('add', {
   name: 'Books',
-  path: 'books',
+  path: 'books.index',
   type: 'primary'
 });
 

@@ -7,8 +7,9 @@ export default View.extend({
 
   attributes() {
     return {
-      class : `list-group-item ${(this.model.isActive() ? 'active' : '')}`,
-      href  : `#books/${this.model.get('id')}`
+      class : `list-group-item`,
+      route : `books.show`,
+      'param-bookid': `${this.model.get('id')}`
     };
   }
 });
