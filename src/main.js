@@ -9,10 +9,13 @@ import HeaderService from './header/service';
 import FlashesService from './flashes/service';
 
 import IndexRoute from './index/route';
+
 import ColorsIndexRoute from './colors/index/route';
 import ColorsShowRoute from './colors/show/route';
 import ColorsEditRoute from './colors/edit/route';
 import ColorsCreateRoute from './colors/create/route';
+
+import BooksRoute from './books/route';
 
 let app = new Application();
 
@@ -47,7 +50,7 @@ router.map(function (route) {
     route('colors.show', {path: ':colorid', routeClass: ColorsShowRoute});
     route('colors.edit', {path: ':colorid/edit', routeClass: ColorsEditRoute});
   });
-  route('books', {path: '/books'}, function () {
+  route('books', {path: '/books', routeClass: BooksRoute}, function () {
     route('books.index', {path: 'index'});
     route('books.show', {path: ':bookid'});
   });
@@ -56,6 +59,12 @@ router.map(function (route) {
 HeaderService.request('add', {
   name: 'Colors',
   path: 'colors',
+  type: 'primary'
+});
+
+HeaderService.request('add', {
+  name: 'Books',
+  path: 'books',
   type: 'primary'
 });
 
