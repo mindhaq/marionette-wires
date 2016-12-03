@@ -16,6 +16,7 @@ import ColorsEditRoute from './colors/edit/route';
 import ColorsCreateRoute from './colors/create/route';
 
 import BooksRoute from './books/route';
+import BooksIndexView from './books/index/view'
 
 let app = new Application();
 
@@ -51,7 +52,7 @@ router.map(function (route) {
     route('colors.edit', {path: ':colorid/edit', routeClass: ColorsEditRoute});
   });
   route('books', {path: '/books', routeClass: BooksRoute}, function () {
-    route('books.index', {path: 'index'});
+    route('books.index', {path: 'index', viewClass: BooksIndexView});
     route('books.show', {path: ':bookid'});
   });
 });
