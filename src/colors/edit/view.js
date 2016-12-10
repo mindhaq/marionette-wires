@@ -1,9 +1,9 @@
 import nprogress from 'nprogress';
-import {history} from 'backbone';
 import FormBehavior from '../../forms/behavior';
 import {View} from 'backbone.marionette';
 import template from './template.hbs';
 import storage from '../storage';
+import Radio from 'backbone.radio';
 
 export default View.extend({
   template: template,
@@ -33,7 +33,7 @@ export default View.extend({
       nprogress.start();
       this.model.set(this.form);
       storage.save(this.model).then(() => {
-        history.navigate('colors/' + this.model.id, { trigger: true });
+        Radio.channel('router').request('transitionTo', 'colors.show', {colorid: this.model.id});
       });
     }
   }

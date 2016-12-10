@@ -2,8 +2,8 @@ import {View} from 'backbone.marionette';
 import nprogress from 'nprogress';
 import ModalService from '../../modal/service';
 import FlashesService from '../../flashes/service';
-import {history} from 'backbone';
 import template from './template.hbs';
+import Radio from 'backbone.radio';
 
 export default View.extend({
   template: template,
@@ -54,7 +54,7 @@ export default View.extend({
   },
 
   handleDestroySuccess() {
-    history.navigate('colors', { trigger: true });
+    Radio.channel('router').request('transitionTo', 'colors.index');
     FlashesService.request('add', {
       timeout : 5000,
       type    : 'info',
