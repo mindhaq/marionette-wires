@@ -15,7 +15,7 @@ module.exports = {
       template: __dirname + '/src/index.html'
     }),
     // extract inline css into separate 'styles.css'
-    new ExtractTextPlugin(__dirname + '/dist/bundle.css')
+    new ExtractTextPlugin('bundle.css')
   ],
   module: {
     loaders: [
