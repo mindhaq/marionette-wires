@@ -5,6 +5,7 @@ import Marionette from 'backbone.marionette';
 import 'bootstrap';
 import 'backbone.syphon';
 import 'babel-polyfill';
+import 'backbone.localstorage';
 
 // start the marionette inspector
 if (window.__agent) {
