@@ -4,7 +4,7 @@ import LayoutView from './layout-view';
 
 export default Route.extend({
   activate() {
-    return storage.findAll().then(collection => {
+    return storage.findAll({ajaxSync: true}).then(collection => {
       this.collection = collection;
     });
   },

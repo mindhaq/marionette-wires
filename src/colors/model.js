@@ -1,7 +1,9 @@
-import {Model} from 'backbone';
+import Backbone from 'backbone';
 
-export default Model.extend({
+export default Backbone.Model.extend({
   urlRoot: '/api/colors',
+
+  localStorage: new Backbone.LocalStorage('colors'),
 
   defaults: {
     active: false

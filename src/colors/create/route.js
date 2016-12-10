@@ -6,7 +6,7 @@ import storage from '../storage';
 export default Route.extend({
   activate() {
     this.model = new Model();
-    return storage.findAll().then(collection => {
+    return storage.findAll({ajaxSync: true}).then(collection => {
       this.collection = collection;
     });
   },

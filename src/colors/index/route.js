@@ -6,7 +6,7 @@ export default Route.extend({
   activate(transition) {
     let pageParam = transition.query.page;
     this.page = pageParam && parseFloat(pageParam) || 1;
-    return storage.findAll().then(collection => {
+    return storage.findAll({ajaxSync: true}).then(collection => {
       this.collection = collection;
     });
   },

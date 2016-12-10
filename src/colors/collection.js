@@ -1,7 +1,8 @@
-import {Collection} from 'backbone';
+import Backbone from 'backbone';
 import Model from './model';
 
-export default Collection.extend({
+export default Backbone.Collection.extend({
   url: '../api/colors/fixture.json',
+  localStorage: Model.prototype.localStorage,
   model: Model
 });
