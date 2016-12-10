@@ -21,11 +21,11 @@ const WiresModalService = ModalService.extend({
   },
 
   render(view) {
-    this.layout.content.show(view);
+    this.layout.getRegion('content').show(view);
   },
 
   remove() {
-    this.layout.content.reset();
+    this.layout.getRegion('content').reset();
   },
 
   animateIn() {
