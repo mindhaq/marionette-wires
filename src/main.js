@@ -36,7 +36,7 @@ FlashesService.setup({
 });
 
 $(document).ajaxError(() => {
-  FlashesService.add({
+  FlashesService.request('add', {
     type: 'danger',
     title: 'Server Error'
   });
