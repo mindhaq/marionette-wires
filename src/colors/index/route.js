@@ -11,6 +11,14 @@ export default Route.extend({
     });
   },
 
+  updateView(transition) {
+    let pageParam = transition.query.page;
+    let page = pageParam && parseFloat(pageParam) || 1;
+    this.view.updateState({page: page});
+    this.view.render();
+    return true
+  },
+
   viewClass: LayoutView,
 
   viewOptions: function () {

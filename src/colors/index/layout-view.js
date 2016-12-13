@@ -49,5 +49,10 @@ export default View.extend({
     let next = current < total ? current + 1 : false;
 
     return { total, current, pages, prev, next };
+  },
+
+  updateState(options) {
+    this.state = { start: 0, limit: 20 };
+    this.state.start = (options.page - 1) * this.state.limit;
   }
 });
