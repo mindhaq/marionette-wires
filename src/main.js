@@ -1,5 +1,6 @@
 import './plugins';
 import $ from 'jquery';
+import Radio from 'backbone.radio';
 import {createRouter, middleware} from 'marionette.routing';
 
 import Application from './application/application';
@@ -10,6 +11,7 @@ import FlashesService from './flashes/service';
 
 import IndexRoute from './index/route';
 
+import ColorsRoute from './colors/route';
 import ColorsIndexRoute from './colors/index/route';
 import ColorsShowRoute from './colors/show/route';
 import ColorsEditRoute from './colors/edit/route';
@@ -48,27 +50,35 @@ router.rootRegion = app.layout.getRegion('content');
 
 router.map(function (route) {
   route('index', {path: '/', routeClass: IndexRoute});
-  route('colors', {path: '/colors', abstract: true}, function () {
-    route('colors.index', {path: '', routeClass: ColorsIndexRoute});
+  route('colors', {path: '/colors', routeClass: ColorsRoute}, function () {
+    route('colors.index', {path: 'index', routeClass: ColorsIndexRoute});
     route('colors.new', {path: 'new', routeClass: ColorsCreateRoute});
     route('colors.show', {path: ':colorid', routeClass: ColorsShowRoute});
     route('colors.edit', {path: ':colorid/edit', routeClass: ColorsEditRoute});
   });
-  route('books', {path: '/books', routeClass: BooksRoute, abstract: true}, function () {
-    route('books.index', {path: '', viewClass: BooksIndexView});
+  route('books', {path: '/books', routeClass: BooksRoute}, function () {
+    route('books.index', {path: 'index', viewClass: BooksIndexView});
     route('books.show', {path: ':bookid', routeClass: BooksShowRoute});
   });
 });
 
+Radio.channel('router').on('before:transition', function (transition) {
+  if (transition.path === '/books') {
+    transition.redirectTo('books.index')
+  } else if (transition.path === '/colors') {
+    transition.redirectTo('colors.index')
+  }
+});
+
 HeaderService.request('add', {
   name: 'Colors',
-  path: 'colors.index',
+  path: 'colors',
   type: 'primary'
 });
 
 HeaderService.request('add', {
   name: 'Books',
-  path: 'books.index',
+  path: 'books',
   type: 'primary'
 });
 
