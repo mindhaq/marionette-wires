@@ -19,16 +19,12 @@ export default Application.extend({
 
     this.listenTo(routerChannel, {
       'before:transition' : this.onBeforeTransition,
-      'transition'        : this.onTransition
+      'transition'        : this.onTransition,
+      'transition:error'  : this.onErrorRoute
     });
   },
 
-  onBeforeTransition(transition) {
-    transition.catch((err) => {
-      if (err.type !== 'TransitionCancelled' && err.type !== 'TransitionRedirected') {
-        this.onErrorRoute()
-      }
-    });
+  onBeforeTransition() {
     this.transitioning = true;
     // Don't show for synchronous route changes
     // since marionette.routing transitions are async, all will start the progress bar
