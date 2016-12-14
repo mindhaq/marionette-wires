@@ -6,7 +6,8 @@ export default Route.extend({
   activate(transition) {
     if (this.previousRoute) {
       transition.redirectTo(this.previousRoute.name, this.previousRoute.params, this.previousRoute.query)
-      return
+      this.previousRoute = null
+      return ;
     }
     return storage.findAll({ajaxSync: true}).then(collection => {
       this.collection = collection;
