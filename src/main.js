@@ -48,7 +48,7 @@ router.map(function (route) {
     route('index', {path: '', routeClass: IndexRoute});
     route('colors', {path: 'colors'}, function () {
       route('colors.index', {path: 'index'});
-      route('colors.new', {path: 'new'});
+      route('colors.create', {path: 'new'});
       route('colors.show', {path: ':colorid'});
       route('colors.edit', {path: ':colorid/edit'});
     });
