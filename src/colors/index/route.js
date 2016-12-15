@@ -15,7 +15,6 @@ export default Route.extend({
     let pageParam = transition.query.page;
     let page = pageParam && parseFloat(pageParam) || 1;
     this.view.updateState({page: page});
-    this.view.render();
     return true
   },
 
