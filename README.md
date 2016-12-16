@@ -7,15 +7,18 @@ An opinionated example application built with Marionette.js.
 
 This is a fork of [Marionette Wires](https://github.com/thejameskyle/marionette-wires), with the following differences:
 
-* Use Marionette v3 instead of v2
-* Use webpack instead of browserify and gulp
+* Use [Marionette](http://marionettejs.com/) v3 instead of v2
+* Use [marionette.routing](https://github.com/blikblum/marionette.routing) instead of [backbone.routing](https://github.com/thejameskyle/backbone-routing)
+* Use [webpack](http://webpack.github.io/) instead of browserify and gulp
 * No server, just client side
 
 #### New features
 
 * Code splitting of colors routes (open network tab of dev tools and go to colors section)
 * Remember last selected book
-* Colors pagination is implemented without destructive render 
+* Colors pagination is implemented without destructive render
+ 
+ Check the [live version](https://blikblum.github.io/marionette-wires-revisited/dist/)
  
 
 ## Quick start
