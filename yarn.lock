@@ -149,19 +149,19 @@ babel-code-frame@^6.11.0, babel-code-frame@^6.20.0:
     esutils "^2.0.2"
     js-tokens "^2.0.0"
 
-babel-core@^6.18.0, babel-core@^6.20.0:
-  version "6.20.0"
-  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.20.0.tgz#ab0d7176d9dea434e66badadaf92237865eab1ec"
+babel-core@^6.18.0, babel-core@^6.21.0:
+  version "6.21.0"
+  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.21.0.tgz#75525480c21c803f826ef3867d22c19f080a3724"
   dependencies:
     babel-code-frame "^6.20.0"
-    babel-generator "^6.20.0"
+    babel-generator "^6.21.0"
     babel-helpers "^6.16.0"
     babel-messages "^6.8.0"
     babel-register "^6.18.0"
     babel-runtime "^6.20.0"
     babel-template "^6.16.0"
-    babel-traverse "^6.20.0"
-    babel-types "^6.20.0"
+    babel-traverse "^6.21.0"
+    babel-types "^6.21.0"
     babylon "^6.11.0"
     convert-source-map "^1.1.0"
     debug "^2.1.1"
@@ -173,13 +173,13 @@ babel-core@^6.18.0, babel-core@^6.20.0:
     slash "^1.0.0"
     source-map "^0.5.0"
 
-babel-generator@^6.20.0:
-  version "6.20.0"
-  resolved "https://registry.yarnpkg.com/babel-generator/-/babel-generator-6.20.0.tgz#fee63614e0449390103b3097f3f6a118016c6766"
+babel-generator@^6.21.0:
+  version "6.21.0"
+  resolved "https://registry.yarnpkg.com/babel-generator/-/babel-generator-6.21.0.tgz#605f1269c489a1c75deeca7ea16d43d4656c8494"
   dependencies:
     babel-messages "^6.8.0"
     babel-runtime "^6.20.0"
-    babel-types "^6.20.0"
+    babel-types "^6.21.0"
     detect-indent "^4.0.0"
     jsesc "^1.3.0"
     lodash "^4.2.0"
@@ -260,9 +260,9 @@ babel-helpers@^6.16.0:
     babel-runtime "^6.0.0"
     babel-template "^6.16.0"
 
-babel-loader@^6.2.9:
-  version "6.2.9"
-  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-6.2.9.tgz#2bce6a1c29b47afa90b937ba1fb1f87084d61c61"
+babel-loader@^6.2.10:
+  version "6.2.10"
+  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-6.2.10.tgz#adefc2b242320cd5d15e65b31cea0e8b1b02d4b0"
   dependencies:
     find-cache-dir "^0.1.1"
     loader-utils "^0.2.11"
@@ -523,7 +523,7 @@ babel-template@^6.14.0, babel-template@^6.15.0, babel-template@^6.16.0, babel-te
     babylon "^6.11.0"
     lodash "^4.2.0"
 
-babel-traverse@^6.16.0, babel-traverse@^6.18.0, babel-traverse@^6.20.0:
+babel-traverse@^6.16.0, babel-traverse@^6.18.0:
   version "6.20.0"
   resolved "https://registry.yarnpkg.com/babel-traverse/-/babel-traverse-6.20.0.tgz#5378d1a743e3d856e6a52289994100bbdfd9872a"
   dependencies:
@@ -537,9 +537,32 @@ babel-traverse@^6.16.0, babel-traverse@^6.18.0, babel-traverse@^6.20.0:
     invariant "^2.2.0"
     lodash "^4.2.0"
 
+babel-traverse@^6.21.0:
+  version "6.21.0"
+  resolved "https://registry.yarnpkg.com/babel-traverse/-/babel-traverse-6.21.0.tgz#69c6365804f1a4f69eb1213f85b00a818b8c21ad"
+  dependencies:
+    babel-code-frame "^6.20.0"
+    babel-messages "^6.8.0"
+    babel-runtime "^6.20.0"
+    babel-types "^6.21.0"
+    babylon "^6.11.0"
+    debug "^2.2.0"
+    globals "^9.0.0"
+    invariant "^2.2.0"
+    lodash "^4.2.0"
+
 babel-types@^6.16.0, babel-types@^6.18.0, babel-types@^6.20.0, babel-types@^6.8.0, babel-types@^6.9.0:
   version "6.20.0"
   resolved "https://registry.yarnpkg.com/babel-types/-/babel-types-6.20.0.tgz#3869ecb98459533b37df809886b3f7f3b08d2baa"
+  dependencies:
+    babel-runtime "^6.20.0"
+    esutils "^2.0.2"
+    lodash "^4.2.0"
+    to-fast-properties "^1.0.1"
+
+babel-types@^6.21.0:
+  version "6.21.0"
+  resolved "https://registry.yarnpkg.com/babel-types/-/babel-types-6.21.0.tgz#314b92168891ef6d3806b7f7a917fdf87c11a4b2"
   dependencies:
     babel-runtime "^6.20.0"
     esutils "^2.0.2"
@@ -618,19 +641,9 @@ backbone.storage@^0.2.1:
     backbone "^1.1.2"
     backbone-metal "^0.5.0"
 
-backbone.syphon@^0.6.3:
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/backbone.syphon/-/backbone.syphon-0.6.3.tgz#79733ed5057a6bf56da6e120c600289c3eea0154"
-  dependencies:
-    backbone "1.0.0 - 1.2.3"
-    jquery "^1.8.0 || ^2.1.0"
-    underscore "1.4.4 - 1.8.3"
-
-"backbone@1.0.0 - 1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/backbone/-/backbone-1.2.3.tgz#c22cfd07fc86ebbeae61d18929ed115e999d65b9"
-  dependencies:
-    underscore ">=1.7.0"
+backbone.syphon@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/backbone.syphon/-/backbone.syphon-0.7.0.tgz#69399f303fc1826d298ad4d83519744a69b3832d"
 
 "backbone@1.0.0 - 1.3.x", backbone@^1.0.0, backbone@^1.1.2, backbone@^1.2.0, backbone@^1.3.3:
   version "1.3.3"
@@ -1660,10 +1673,6 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-"jquery@^1.8.0 || ^2.1.0":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
-
 jquery@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.1.1.tgz#347c1c21c7e004115e0a4da32cece041fad3c8a3"
@@ -1790,9 +1799,9 @@ macaddress@^0.2.8:
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/macaddress/-/macaddress-0.2.8.tgz#5904dc537c39ec6dbefeae902327135fa8511f12"
 
-marionette.routing@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/marionette.routing/-/marionette.routing-0.4.1.tgz#085f488f6a78b9d870793d5fb8da50873ed97272"
+marionette.routing@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/marionette.routing/-/marionette.routing-0.4.2.tgz#f6e5df0668abc54a89fdf215ef7f47e01f535010"
   dependencies:
     cherrytree "^2.3.2"
 
@@ -2805,7 +2814,7 @@ uid-number@~0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/uid-number/-/uid-number-0.0.6.tgz#0ea10e8035e8eb5b8e4449f06da1c730663baa81"
 
-"underscore@1.4.4 - 1.8.3", underscore@>=1.7.0, underscore@>=1.8.3, underscore@^1.4.4, underscore@^1.7.0, underscore@^1.8.3:
+"underscore@1.4.4 - 1.8.3", underscore@>=1.8.3, underscore@^1.4.4, underscore@^1.7.0, underscore@^1.8.3:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 
