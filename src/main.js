@@ -46,25 +46,17 @@ router.rootRegion = app.layout.getRegion('content');
 router.map(function (route) {
   route('app', {path: '/', routeClass: ApplicationRoute, abstract: true}, function () {
     route('index', {path: '', routeClass: IndexRoute});
-    route('colors', {path: 'colors'}, function () {
-      route('colors.index', {path: 'index'});
+    route('colors', {path: 'colors', abstract: true}, function () {
+      route('colors.index', {path: ''});
       route('colors.create', {path: 'new'});
       route('colors.show', {path: ':colorid'});
       route('colors.edit', {path: ':colorid/edit'});
     });
-    route('books', {path: 'books', routeClass: BooksRoute}, function () {
-      route('books.index', {path: 'index', viewClass: BooksIndexView});
+    route('books', {path: 'books', routeClass: BooksRoute, abstract: true}, function () {
+      route('books.index', {path: '', viewClass: BooksIndexView});
       route('books.show', {path: ':bookid', routeClass: BooksShowRoute});
     });
   })
-});
-
-Radio.channel('router').on('before:transition', function (transition) {
-  if (transition.path === '/books') {
-    transition.redirectTo('books.index')
-  } else if (transition.path === '/colors') {
-    transition.redirectTo('colors.index')
-  }
 });
 
 HeaderService.request('add', {
