@@ -9,6 +9,12 @@ export default Route.extend({
     });
   },
 
+  contextRequests: {
+    colorModel: function () {
+      return this.model
+    }
+  },
+
   viewClass: View,
 
   viewOptions() {

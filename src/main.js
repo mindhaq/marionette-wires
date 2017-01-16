@@ -49,8 +49,9 @@ router.map(function (route) {
     route('colors', {path: 'colors', abstract: true}, function () {
       route('colors.index', {path: ''});
       route('colors.create', {path: 'new'});
-      route('colors.show', {path: ':colorid'});
-      route('colors.edit', {path: ':colorid/edit'});
+      route('colors.show', {path: ':colorid', outlet: false}, function () {
+        route('colors.edit', {path: 'edit'});
+      });
     });
     route('books', {path: 'books', routeClass: BooksRoute, abstract: true}, function () {
       route('books.index', {path: '', viewClass: BooksIndexView});
