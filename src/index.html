@@ -9,10 +9,15 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <link rel="stylesheet" href="/bundle.css">
+  {{#css}}
+  <link href="{{{.}}}" rel="stylesheet" type="text/css">
+  {{/css}}
 </head>
 <body>
   <div class="application"></div>
-  <script src="/bundle.js"></script>
+
+  {{#js}}
+  <script src="{{{.}}}"></script>
+  {{/js}}
 </body>
 </html>
