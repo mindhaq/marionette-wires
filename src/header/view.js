@@ -1,15 +1,12 @@
-import _ from 'underscore';
+import _ from 'lodash';
 import {history} from 'backbone';
-import {View} from 'backbone.marionette';
+import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
-import {RouterLink} from 'marionette.routing';
 
-export default View.extend({
+export default ItemView.extend({
   template: template,
   tagName: 'nav',
   className: 'header navbar navbar-default navbar-fixed-top',
-
-  behaviors: [RouterLink],
 
   attributes: {
     role: 'navigation'
@@ -19,7 +16,7 @@ export default View.extend({
     all: 'render'
   },
 
-  templateContext() {
+  templateHelpers() {
     return {
       primaryItems   : this.serializeWhere({ type: 'primary' }),
       secondaryItems : this.serializeWhere({ type: 'secondary' })

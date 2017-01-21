@@ -1,7 +1,7 @@
-import {View} from 'backbone.marionette';
+import {LayoutView} from 'backbone.marionette';
 import template from './layout-template.hbs';
 
-export default View.extend({
+export default LayoutView.extend({
   template: template,
   className: 'modal fade',
 

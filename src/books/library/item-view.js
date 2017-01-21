@@ -1,15 +1,14 @@
-import {View} from 'backbone.marionette';
+import {ItemView} from 'backbone.marionette';
 import template from './item-template.hbs';
 
-export default View.extend({
+export default ItemView.extend({
   template: template,
   tagName: 'a',
 
   attributes() {
     return {
-      class : `list-group-item`,
-      route : `books.show`,
-      'param-bookid': `${this.model.get('id')}`
+      class : `list-group-item ${(this.model.isActive() ? 'active' : '')}`,
+      href  : `#books/${this.model.get('id')}`
     };
   }
 });
