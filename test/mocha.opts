@@ -1,0 +1,4 @@
+test/setup/node.js
+test/setup/helpers.js
+test/unit/**/*.js
+--recursive
