@@ -94,3 +94,4 @@ node_modules
 
 .idea/
 /assets.json
+/dist/
