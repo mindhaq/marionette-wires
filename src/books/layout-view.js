@@ -1,11 +1,15 @@
-import {LayoutView} from 'backbone.marionette';
+import {View} from 'backbone.marionette';
 import template from './layout-template.hbs';
+import LibraryView from './library/collection-view';
 
-export default LayoutView.extend({
+export default View.extend({
   template: template,
   className: 'container',
   regions: {
     library : '.books__library',
-    viewer  : '.books__viewer'
+    outlet  : '.books__viewer'
+  },
+  onRender() {
+    this.showChildView('library', new LibraryView({collection: this.collection}))
   }
 });

@@ -1,6 +1,3 @@
-# Build files
-dist/
-
 # nightwatch
 test/integration/reports/*
 

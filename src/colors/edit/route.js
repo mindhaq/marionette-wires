@@ -1,22 +1,13 @@
-import {Route} from 'backbone-routing';
+import {Route} from 'marionette.routing';
 import View from './view';
-import storage from '../storage';
 
 export default Route.extend({
-  initialize(options = {}) {
-    this.container = options.container;
-  },
 
-  fetch(id) {
-    return storage.find(id).then(model => {
-      this.model = model;
-    });
-  },
+  viewClass: View,
 
-  render() {
-    this.view = new View({
-      model: this.model
-    });
-    this.container.show(this.view);
+  viewOptions() {
+    return {
+      model: this.getContext().request('colorModel')
+    }
   }
 });
