@@ -8,7 +8,7 @@ export default Route.extend({
   },
 
   fetch() {
-    return storage.findAll().then(collection => {
+    return storage.findAll({ajaxSync: true}).then(collection => {
       this.collection = collection;
     });
   },

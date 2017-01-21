@@ -1,11 +1,11 @@
-import {ItemView} from 'backbone.marionette';
+import {View} from 'backbone.marionette';
 import nprogress from 'nprogress';
 import ModalService from '../../modal/service';
 import FlashesService from '../../flashes/service';
-import {history} from 'backbone';
 import template from './template.hbs';
+import Radio from 'backbone.radio';
 
-export default ItemView.extend({
+export default View.extend({
   template: template,
   className: 'colors colors--show container',
 
@@ -13,7 +13,7 @@ export default ItemView.extend({
     this.model = options.model;
   },
 
-  templateHelpers() {
+  templateContext() {
     return {
       errors: this.model.validationError
     };
@@ -54,7 +54,7 @@ export default ItemView.extend({
   },
 
   handleDestroySuccess() {
-    history.navigate('colors', { trigger: true });
+    Radio.channel('router').request('transitionTo', 'colors.index');
     FlashesService.request('add', {
       timeout : 5000,
       type    : 'info',

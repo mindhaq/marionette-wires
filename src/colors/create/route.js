@@ -1,25 +1,22 @@
-import {Route} from 'backbone-routing';
+import {Route} from 'marionette.routing';
 import Model from '../model';
 import View from './view';
 import storage from '../storage';
 
 export default Route.extend({
-  initialize(options = {}) {
-    this.container = options.container;
-  },
-
-  fetch() {
+  activate() {
     this.model = new Model();
-    return storage.findAll().then(collection => {
+    return storage.findAll({ajaxSync: true}).then(collection => {
       this.collection = collection;
     });
   },
 
-  render() {
-    this.view = new View({
+  viewClass: View,
+
+  viewOptions() {
+    return {
       collection: this.collection,
       model: this.model
-    });
-    this.container.show(this.view);
+    }
   }
 });

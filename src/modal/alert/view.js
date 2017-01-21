@@ -1,8 +1,8 @@
-import {ItemView} from 'backbone.marionette';
+import {View} from 'backbone.marionette';
 import {Model} from 'backbone';
 import template from './template.hbs';
 
-export default ItemView.extend({
+export default View.extend({
   template: template,
 
   initialize(options = {}) {
