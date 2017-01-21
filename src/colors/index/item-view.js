@@ -1,4 +1,4 @@
-import {ItemView} from 'backbone.marionette';
+import ItemView from '../../common/item-view';
 import template from './item-template.hbs';
 
 export default ItemView.extend({
@@ -8,11 +8,11 @@ export default ItemView.extend({
 
   attributes() {
     return {
-      href: `#colors/${this.model.get('id')}`
+      href: '#colors/' + this.model.get('id')
     };
   },
 
   modelEvents: {
-    all: 'render'
+    'all': 'render'
   }
 });

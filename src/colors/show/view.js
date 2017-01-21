@@ -1,16 +1,17 @@
-import {ItemView} from 'backbone.marionette';
+import View from '../../common/view';
 import nprogress from 'nprogress';
-import ModalService from '../../modal/service';
-import FlashesService from '../../flashes/service';
-import {history} from 'backbone';
+import Radio from 'backbone.radio';
+import Backbone from 'backbone';
 import template from './template.hbs';
 
-export default ItemView.extend({
+export default View.extend({
   template: template,
   className: 'colors colors--show container',
-
-  initialize(options = {}) {
+  
+  initialize(options) {
     this.model = options.model;
+    this.model.cleanup();
+    //this.channelFlashes = Radio.channel('flashes');
   },
 
   templateHelpers() {
@@ -25,12 +26,12 @@ export default ItemView.extend({
   },
 
   modelEvents: {
-    all: 'render'
+    'all': 'render'
   },
 
   handleToggle() {
     this.model.set('active', !this.model.get('active'));
-    this.model.save().fail(() => this.handleToggleFailure());
+    this.model.save().fail(this.handleToggleFailure);
   },
 
   handleToggleFailure() {
@@ -38,28 +39,26 @@ export default ItemView.extend({
   },
 
   handleDestroy() {
-    ModalService.request('confirm', {
+    var self = this;
+    Radio.request('modal', 'confirm', {
       title : 'Confirm Color Destruction',
-      text  : `Are you sure you want to destroy ${this.model.get('name')}?`
-    }).then(confirmed => {
-      if (!confirmed) {
-        return;
-      }
-
+      text  : 'Are you sure you want to destroy ' + this.model.get('name') + '?'
+    }).then(function() {
       nprogress.start();
-
-      return this.model.destroy({ wait: true })
-        .then(() => this.handleDestroySuccess());
+      return self.model.destroy({ wait: true });
+    }).then(function() {
+      self.handleDestroySuccess();
     });
   },
 
   handleDestroySuccess() {
-    history.navigate('colors', { trigger: true });
-    FlashesService.request('add', {
+    Backbone.history.navigate('colors', { trigger: true });
+     Radio.request('flashes', 'add', {
+    //Radio.request('flashes', 'add', {
       timeout : 5000,
       type    : 'info',
-      title   : `It's gone!`,
-      body    : `You have deleted ${this.model.get('name')}.`
+      title   : 'It\'s gone!',
+      body    : 'You have deleted ' + this.model.get('name') + '.'
     });
   }
 });

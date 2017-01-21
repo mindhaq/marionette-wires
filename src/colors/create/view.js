@@ -1,11 +1,11 @@
 import nprogress from 'nprogress';
-import {ItemView} from 'backbone.marionette';
+import View from '../../common/view';
 import FormBehavior from '../../forms/behavior';
-import {history} from 'backbone';
+import Backbone from 'backbone';
 import template from './template.hbs';
 import storage from '../storage';
 
-export default ItemView.extend({
+export default View.extend({
   template: template,
   className: 'colors colors--create container',
 
@@ -24,7 +24,7 @@ export default ItemView.extend({
   },
 
   handleSubmit() {
-    let errors = this.model.validate(this.form);
+    var errors = this.model.validate(this.form);
 
     if (errors) {
       this.errors = errors;
@@ -33,7 +33,7 @@ export default ItemView.extend({
       nprogress.start();
       this.model.set(this.form);
       storage.save(this.model).then(() => {
-        history.navigate('colors', { trigger: true });
+        Backbone.history.navigate('colors', { trigger: true });
       });
     }
   }

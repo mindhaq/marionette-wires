@@ -1,10 +1,10 @@
-import {Route} from 'backbone-routing';
+import Route from '../../common/route';
 import Model from '../model';
 import View from './view';
 import storage from '../storage';
 
 export default Route.extend({
-  initialize(options = {}) {
+  initialize(options) {
     this.container = options.container;
   },
 

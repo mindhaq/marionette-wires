@@ -1,12 +1,7 @@
-import {Route} from 'backbone-routing';
-import {history} from 'backbone';
+import Route from '../../common/route';
 import storage from '../storage';
 
 export default Route.extend({
-  initialize() {
-    this.listenTo(this, 'enter', this.onEnter);
-  },
-
   fetch() {
     return storage.findAll().then(collection => {
       this.collection = collection;
@@ -14,8 +9,8 @@ export default Route.extend({
   },
 
   onEnter() {
-    let id = this.collection.first().get('id');
-    history.navigate(`books/${id}`, {
+    var id = this.collection.first().get('id');
+    this.navigate('books/' + id, {
       trigger: true,
       replace: true
     });

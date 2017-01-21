@@ -1,4 +1,4 @@
-import {CollectionView} from 'backbone.marionette';
+import CollectionView from '../common/collection-view';
 import ItemView from './item-view';
 
 export default CollectionView.extend({

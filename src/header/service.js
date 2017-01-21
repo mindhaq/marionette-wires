@@ -1,34 +1,42 @@
-import Service from 'backbone.service';
-import {Collection} from 'backbone';
+import Service from '../common/service';
+import Collection from '../common/collection';
 import View from './view';
 
-const HeaderService = Service.extend({
-  setup(options = {}) {
+export default Service.extend({
+  channelName: 'header',
+
+  initialize(options) {
     this.container = options.container;
+    this.collection = new Collection();
+    this.start();
   },
 
-  start() {
-    this.collection = new Collection();
+  onStart() {
     this.view = new View({ collection: this.collection });
     this.container.show(this.view);
+
+    //this.channel.comply({
+    this.channel.reply({
+      add      : this.onAdd,
+      activate : this.onActivate,
+      remove   : this.onRemove
+    }, this);
   },
 
-  requests: {
-    add: 'add',
-    remove: 'remove',
-    activate: 'activate',
+  onStop() {
+    this.channel.reset();
   },
 
-  add(model) {
+  onAdd(model) {
     this.collection.add(model);
   },
 
-  remove(model) {
+  onRemove(model) {
     model = this.collection.findWhere(model);
     this.collection.remove(model);
   },
 
-  activate(model) {
+  onActivate(model) {
     this.collection.invoke('set', 'active', false);
     model = this.collection.findWhere(model);
     if (model) {
@@ -36,5 +44,3 @@ const HeaderService = Service.extend({
     }
   }
 });
-
-export default new HeaderService();

@@ -1,6 +1,5 @@
 import './plugins';
 import Backbone from 'backbone';
-import $ from 'jquery';
 
 import Application from './application/application';
 
@@ -14,23 +13,16 @@ import BooksRouter from './books/router';
 
 let app = new Application();
 
-ModalService.setup({
+app.modal = new ModalService({
   container: app.layout.overlay
 });
 
-HeaderService.setup({
+app.header = new HeaderService({
   container: app.layout.header
 });
 
-FlashesService.setup({
+app.flashes = new FlashesService({
   container: app.layout.flashes
-});
-
-$(document).ajaxError(() => {
-  FlashesService.add({
-    type: 'danger',
-    title: 'Server Error'
-  });
 });
 
 app.index = new IndexRouter({

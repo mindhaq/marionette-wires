@@ -1,9 +1,9 @@
-import {Route} from 'backbone-routing';
+import Route from '../../common/route';
 import LayoutView from './layout-view';
 import storage from '../storage';
 
 export default Route.extend({
-  initialize(options = {}) {
+  initialize(options) {
     this.container = options.container;
   },
 
@@ -14,7 +14,7 @@ export default Route.extend({
   },
 
   render(params) {
-    let page = params && parseFloat(params.page) || 1;
+    var page = params && parseFloat(params.page) || 1;
 
     this.layoutView = new LayoutView({
       collection: this.collection,
