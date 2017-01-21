@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import _ from 'underscore';
+import _ from 'lodash';
 import Radio from 'backbone.radio';
 import nprogress from 'nprogress';
 import {Application} from 'backbone.marionette';
@@ -18,17 +18,15 @@ export default Application.extend({
     this.layout.render();
 
     this.listenTo(routerChannel, {
-      'before:transition' : this.onBeforeTransition,
-      'transition'        : this.onTransition,
-      'transition:error'  : this.onErrorRoute
+      'before:enter:route' : this.onBeforeEnterRoute,
+      'enter:route'        : this.onEnterRoute,
+      'error:route'        : this.onErrorRoute
     });
   },
 
-  onBeforeTransition() {
+  onBeforeEnterRoute() {
     this.transitioning = true;
     // Don't show for synchronous route changes
-    // since marionette.routing transitions are async, all will start the progress bar
-    // todo: configure for a sane default
     _.defer(() => {
       if (this.transitioning) {
         nprogress.start();
@@ -36,7 +34,7 @@ export default Application.extend({
     });
   },
 
-  onTransition() {
+  onEnterRoute() {
     this.transitioning = false;
     this.$body.scrollTop(0);
     nprogress.done();

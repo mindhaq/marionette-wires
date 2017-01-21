@@ -1,11 +1,11 @@
 import nprogress from 'nprogress';
-import {View} from 'backbone.marionette';
+import {ItemView} from 'backbone.marionette';
 import FormBehavior from '../../forms/behavior';
+import {history} from 'backbone';
 import template from './template.hbs';
 import storage from '../storage';
-import Radio from 'backbone.radio';
 
-export default View.extend({
+export default ItemView.extend({
   template: template,
   className: 'colors colors--create container',
 
@@ -13,7 +13,7 @@ export default View.extend({
     form: { behaviorClass: FormBehavior }
   },
 
-  templateContext() {
+  templateHelpers() {
     return {
       errors: this.errors
     };
@@ -33,7 +33,7 @@ export default View.extend({
       nprogress.start();
       this.model.set(this.form);
       storage.save(this.model).then(() => {
-        Radio.channel('router').request('transitionTo', 'colors.index');
+        history.navigate('colors', { trigger: true });
       });
     }
   }

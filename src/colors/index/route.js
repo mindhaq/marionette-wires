@@ -1,29 +1,26 @@
-import {Route} from 'marionette.routing';
+import {Route} from 'backbone-routing';
 import LayoutView from './layout-view';
 import storage from '../storage';
 
 export default Route.extend({
-  activate(transition) {
-    let pageParam = transition.query.page;
-    this.page = pageParam && parseFloat(pageParam) || 1;
-    return storage.findAll({ajaxSync: true}).then(collection => {
+  initialize(options = {}) {
+    this.container = options.container;
+  },
+
+  fetch() {
+    return storage.findAll().then(collection => {
       this.collection = collection;
     });
   },
 
-  updateView(transition) {
-    let pageParam = transition.query.page;
-    let page = pageParam && parseFloat(pageParam) || 1;
-    this.view.updateState({page: page});
-    return true
-  },
+  render(params) {
+    let page = params && parseFloat(params.page) || 1;
 
-  viewClass: LayoutView,
-
-  viewOptions: function () {
-    return {
+    this.layoutView = new LayoutView({
       collection: this.collection,
-      page: this.page
-    }
+      page: page
+    });
+
+    this.container.show(this.layoutView);
   }
 });

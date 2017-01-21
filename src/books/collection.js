@@ -1,8 +1,7 @@
-import Backbone from 'backbone';
+import {Collection} from 'backbone';
 import Model from './model';
 
-export default Backbone.Collection.extend({
-  url: '../api/books/fixture.json',
-  localStorage: new Backbone.LocalStorage('books'),
+export default Collection.extend({
+  url: '/api/books',
   model: Model
 });
